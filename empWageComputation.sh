@@ -3,13 +3,17 @@
 #WELCOME TO EMPLOYEE WAGE COMPUTATION PROGRAM
 
 #CONSTANTS
-isPresent=1
+<<<<<<< HEAD
+
 wagePerHr=20
 isFullTime=8
+=======
+IS_PRESENT=1
+>>>>>>> EmployeeAttendance
 
 #USERINPUT
 randomCheck=$((RANDOM%2))
-if [ $isPresent -eq $randomCheck ]
+if [ $IS_PRESENT -eq $randomCheck ]
 then
 	echo "Employee is Present "
 else
