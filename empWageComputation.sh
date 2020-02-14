@@ -4,6 +4,8 @@
 
 #CONSTANTS
 isPresent=1
+wagePerHr=20
+isFullTime=8
 
 #USERINPUT
 randomCheck=$((RANDOM%2))
@@ -13,3 +15,7 @@ then
 else
 	echo "Employee is Absent "
 fi
+
+#CALCULATING DAILY WAGE
+dailyWage=$(($isFullTime * $wagePerHr))
+echo "Daily Wage of an Fulltime Employee is $dailyWage "
