@@ -3,13 +3,9 @@
 #WELCOME TO EMPLOYEE WAGE COMPUTATION PROGRAM
 
 #CONSTANTS
-<<<<<<< HEAD
-
+IS_PRESENT=1
 wagePerHr=20
 isFullTime=8
-=======
-IS_PRESENT=1
->>>>>>> EmployeeAttendance
 
 #USERINPUT
 randomCheck=$((RANDOM%2))
