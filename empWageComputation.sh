@@ -3,19 +3,18 @@
 #WELCOME TO EMPLOYEE WAGE COMPUTATION PROGRAM
 
 #CONSTANTS
-isPresent=1
-wagePerHr=20
-isFullTime=8
+ISPRESENT=1
+WAGE_PER_HR=20
+ISFULLTIME=8
 
 #USERINPUT
 randomCheck=$((RANDOM%2))
-if [ $isPresent -eq $randomCheck ]
+if [ $ISPRESENT -eq $randomCheck ]
 then
 	echo "Employee is Present "
+	dailyWage=$(($ISFULLTIME * $WAGE_PER_HR))
 else
 	echo "Employee is Absent "
+	dailyWage=0
 fi
-
-#CALCULATING DAILY WAGE
-dailyWage=$(($isFullTime * $wagePerHr))
 echo "Daily Wage of an Fulltime Employee is $dailyWage "
