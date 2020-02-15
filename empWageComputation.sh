@@ -7,13 +7,17 @@ WAGE_PER_HR=20
 ISFULLTIME=1
 ISPARTTIME=2
 WORKINGDAYS=20
+WORK_HR_IN_MONTH=100
 
 #VARIABLE
-totalSalary=0
+totalEmpHr=0
+totalWorkingDays=0
 
-#CHECKS DAILYWAGE FOR FULLTIME AND PARTTIME USING CASE
-for (( day=1; day<=$WORKINGDAYS; day++ ))
+#CHECKS TOTAL EMPLOYEE HRS IN A MONTH
+while [[ $totalEmpHr -lt $WORK_HR_IN_MONTH &&
+			$totalWorkingDays -lt $WORKINGDAYS ]]
 do
+	((totalWorkingDays++))
 	randomCheck=$((RANDOM%3))
 	case $randomCheck in
 		$ISFULLTIME)
@@ -26,8 +30,8 @@ do
 		empHrs=0
 			;;
 	esac
-salary=$(($empHrs*$WAGE_PER_HR))
-totalSalary=$(($totalSalary+$salary))
+	totalEmpHr=$(($totalEmpHr+$empHrs))
 done
-echo "Total salary of an employee in month is $totalSalary"
-
+totalSalary=$(($totalEmpHr*$WAGE_PER_HR))
+echo "Total employee hr in a month is $totalEmpHr"
+echo "Total Salary is $totalSalary"
