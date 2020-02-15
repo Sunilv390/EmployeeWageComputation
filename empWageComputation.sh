@@ -13,13 +13,9 @@ WORK_HR_IN_MONTH=100
 totalEmpHr=0
 totalWorkingDays=0
 
-#CHECKS TOTAL EMPLOYEE HRS IN A MONTH
-while [[ $totalEmpHr -lt $WORK_HR_IN_MONTH &&
-			$totalWorkingDays -lt $WORKINGDAYS ]]
-do
-	((totalWorkingDays++))
-	randomCheck=$((RANDOM%3))
-	case $randomCheck in
+#FUNCTIONS TO CHECK WORKING HOURS
+function getWorkHours() {
+	case $1 in
 		$ISFULLTIME)
 			empHrs=8
 			;;
@@ -27,11 +23,21 @@ do
 			empHrs=4
 			;;
 		*)
-		empHrs=0
+			empHrs=0
 			;;
 	esac
-	totalEmpHr=$(($totalEmpHr+$empHrs))
+	echo $empHrs
+}
+
+#CALLING THE FUNCTION USING WHILE
+while [[ $totalWorkingHr -lt $WORK_HR_IN_MONTH &&
+         $totalWorkingDays -lt $WORKINGDAYS ]]
+do
+	randomCheck=$((RANDOM%3))
+	((totalWorkingDays++))
+	empHrs=$( getWorkHours $randomCheck )
+	totalWorkingHr=$(($totalWorkingHr+$empHrs))
 done
-totalSalary=$(($totalEmpHr*$WAGE_PER_HR))
-echo "Total employee hr in a month is $totalEmpHr"
+totalSalary=$(($totalWorkingHr*$WAGE_PER_HR))
+echo "Total Working employee hr in a month is $totalWorkingHr"
 echo "Total Salary is $totalSalary"
