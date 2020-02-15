@@ -48,7 +48,6 @@ do
 #STORING DAILYWAGE IN ARRAY
 	dailyWage[$totalWorkingDays]=$( calculateDailyWage $empHrs )
 done
-totalSalary=$(($totalWorkingHr*$WAGE_PER_HR))
-echo "Total Working employee hr in a month is $totalWorkingHr"
-echo "Total Salary is $totalSalary"
+totalSalary=$( calculateDailyWage $totalWorkingHr )
 echo "Daily Wage is ${dailyWage[@]} "
+echo "All key ${!dailyWage[@]} "
