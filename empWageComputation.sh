@@ -29,6 +29,13 @@ function getWorkHours() {
 	echo $empHrs
 }
 
+#FUNCTION FOR CALCULATING DAILY WAGE
+function calculateDailyWage() {
+local empHrs=$1
+wage=$(($empHrs*$WAGE_PER_HR))
+echo $wage
+}
+
 #CALLING THE FUNCTION USING WHILE
 while [[ $totalWorkingHr -lt $WORK_HR_IN_MONTH &&
          $totalWorkingDays -lt $WORKINGDAYS ]]
@@ -37,7 +44,11 @@ do
 	((totalWorkingDays++))
 	empHrs=$( getWorkHours $randomCheck )
 	totalWorkingHr=$(($totalWorkingHr+$empHrs))
+
+#STORING DAILYWAGE IN ARRAY
+	dailyWage[$totalWorkingDays]=$( calculateDailyWage $empHrs )
 done
 totalSalary=$(($totalWorkingHr*$WAGE_PER_HR))
 echo "Total Working employee hr in a month is $totalWorkingHr"
 echo "Total Salary is $totalSalary"
+echo "Daily Wage is ${dailyWage[@]} "
